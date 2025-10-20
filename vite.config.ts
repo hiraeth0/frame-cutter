@@ -9,6 +9,7 @@ export default defineConfig({
       },
     }),
   ],
+  base: '/frame-cutter/',
   server: {
     port: 3000,
   },
