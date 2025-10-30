@@ -1,0 +1,106 @@
+.root {
+  border-radius: 24px;
+  border: 1px solid #3b3b3b;
+  background-color: #252525;
+  transition: border-color 0.2s;
+}
+
+.root--highlighted {
+  border-color: #ffffff;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 48px 32px 32px;
+  cursor: pointer;
+}
+
+.info--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fileInput {
+  display: none;
+}
+
+.hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  .hint__title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    color: #ffffff;
+  }
+
+  .hint__subtitle {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    color: #929292;
+  }
+}
+
+.divider {
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background-color: #3b3b3b;
+}
+
+.files {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  gap: 16px;
+
+  .files__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+}
+
+.progressContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+}
+
+.progressBar {
+  width: 100%;
+  height: 9px;
+  border-radius: 111px;
+  contain: paint;
+  background-color: #2f2f2f;
+
+  .progressBar__line {
+    width: 0%;
+    height: 100%;
+    background-color: #ffffff;
+    transition: width 200ms;
+  }
+}
+
+.progressMessage {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  color: #ffffff;
+}

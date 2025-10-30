@@ -1,0 +1,47 @@
+.root {
+  display: flex;
+  gap: 23px;
+  align-items: center;
+}
+
+.fileType {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 48px;
+  border-radius: 12px;
+  background-color: #2f2f2f;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  color: #ffffff;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .info__title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    color: #ffffff;
+  }
+
+  .info__subtitle {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    color: #929292;
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
