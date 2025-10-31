@@ -154,54 +154,6 @@ export const FileDropzone: FC<Props> = ({ files, progress, onChange }) => {
                   />
                 </li>
               ))}
-              {files.map((file, index) => (
-                <li key={index}>
-                  <FilePreview
-                    file={file}
-                    onRemove={() => onChange(files.filter((item) => item !== file))}
-                  />
-                </li>
-              ))}
-              {files.map((file, index) => (
-                <li key={index}>
-                  <FilePreview
-                    file={file}
-                    onRemove={() => onChange(files.filter((item) => item !== file))}
-                  />
-                </li>
-              ))}
-              {files.map((file, index) => (
-                <li key={index}>
-                  <FilePreview
-                    file={file}
-                    onRemove={() => onChange(files.filter((item) => item !== file))}
-                  />
-                </li>
-              ))}
-              {files.map((file, index) => (
-                <li key={index}>
-                  <FilePreview
-                    file={file}
-                    onRemove={() => onChange(files.filter((item) => item !== file))}
-                  />
-                </li>
-              ))}
-              {files.map((file, index) => (
-                <li key={index}>
-                  <FilePreview
-                    file={file}
-                    onRemove={() => onChange(files.filter((item) => item !== file))}
-                  />
-                </li>
-              ))}
-              {files.map((file, index) => (
-                <li key={index}>
-                  <FilePreview
-                    file={file}
-                    onRemove={() => onChange(files.filter((item) => item !== file))}
-                  />
-                </li>
-              ))}
             </ul>
           </div>
         </>
