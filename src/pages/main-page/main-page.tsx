@@ -156,7 +156,7 @@ export const MainPage: React.FC = () => {
           onChange={setFiles}
         />
         <Button
-          title={isDone ? 'Загрузить ещё' : 'Нарезать и скачать'}
+          title={isDone ? 'Загрузить новое видео' : 'Нарезать и скачать'}
           disabled={!files.length || (isProcessing && !isDone)}
           onClick={() => {
             if (isDone) {

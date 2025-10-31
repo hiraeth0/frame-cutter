@@ -3,6 +3,7 @@ import styles from './file-dropzone.module.css'
 import { IconUpload } from '../../../icons/icon-upload'
 import { FilePreview } from './file-preview/file-preview'
 import clsx from 'clsx'
+import { showToast } from '../../../components/toast-provider/show-toast'
 
 const MAX_FILE_SIZE = 1 * 1024 * 1024 * 1024
 const ALLOWED_VIDEO_TYPES = [
@@ -35,21 +36,6 @@ const ALLOWED_EXTENSIONS = [
   '.3g2',
 ]
 
-const validateFile = (file: File) => {
-  const isVideoType = ALLOWED_VIDEO_TYPES.includes(file.type)
-  const hasVideoExtension = ALLOWED_EXTENSIONS.some((ext) => file.name.toLowerCase().endsWith(ext))
-
-  if (!isVideoType && !hasVideoExtension) {
-    return false
-  }
-
-  if (file.size > MAX_FILE_SIZE) {
-    return false
-  }
-
-  return true
-}
-
 type Props = {
   files: File[]
   progress: number | null
@@ -63,7 +49,26 @@ export const FileDropzone: FC<Props> = ({ files, progress, onChange }) => {
   const isProcessing = typeof progress === 'number'
 
   const handleAppendFiles = (input: File[]) => {
-    const validFiles = input.filter(validateFile)
+    const validFiles = input.filter((file) => {
+      const isVideoType = ALLOWED_VIDEO_TYPES.includes(file.type)
+      const hasVideoExtension = ALLOWED_EXTENSIONS.some((ext) =>
+        file.name.toLowerCase().endsWith(ext)
+      )
+
+      if (!isVideoType && !hasVideoExtension) {
+        showToast(`${file.name} использует недопустимый формат видео`, 'error')
+
+        return false
+      }
+
+      if (file.size > MAX_FILE_SIZE) {
+        showToast(`${file.name} превышает 1 ГБ`, 'error')
+
+        return false
+      }
+
+      return true
+    })
 
     if (!validFiles.length) {
       return
