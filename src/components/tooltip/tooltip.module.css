@@ -1,0 +1,34 @@
+.trigger {
+  all: unset;
+  box-sizing: border-box;
+  display: block;
+}
+
+.content {
+  max-width: 250px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background-color: #444447;
+  font-weight: 400;
+  font-size: 15px;
+  color: #ffffff;
+  animation: popover 0.2s 1;
+}
+
+.arrow {
+  & polygon {
+    fill: #444447;
+  }
+}
+
+@keyframes popover {
+  from {
+    transform: scale(0.99);
+    opacity: 0.2;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
