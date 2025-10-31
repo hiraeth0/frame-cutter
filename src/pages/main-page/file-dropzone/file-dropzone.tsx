@@ -142,79 +142,83 @@ export const FileDropzone: FC<Props> = ({ files, progress, onChange }) => {
       </div>
 
       {files.length && !isProcessing ? (
-        <div className={styles.files} onClick={(event) => event.stopPropagation()}>
+        <>
           <div className={styles.divider} />
-          <ul className={styles.files__list}>
-            {files.map((file, index) => (
-              <li key={index}>
-                <FilePreview
-                  file={file}
-                  onRemove={() => onChange(files.filter((item) => item !== file))}
-                />
-              </li>
-            ))}
-            {files.map((file, index) => (
-              <li key={index}>
-                <FilePreview
-                  file={file}
-                  onRemove={() => onChange(files.filter((item) => item !== file))}
-                />
-              </li>
-            ))}
-            {files.map((file, index) => (
-              <li key={index}>
-                <FilePreview
-                  file={file}
-                  onRemove={() => onChange(files.filter((item) => item !== file))}
-                />
-              </li>
-            ))}
-            {files.map((file, index) => (
-              <li key={index}>
-                <FilePreview
-                  file={file}
-                  onRemove={() => onChange(files.filter((item) => item !== file))}
-                />
-              </li>
-            ))}
-            {files.map((file, index) => (
-              <li key={index}>
-                <FilePreview
-                  file={file}
-                  onRemove={() => onChange(files.filter((item) => item !== file))}
-                />
-              </li>
-            ))}
-            {files.map((file, index) => (
-              <li key={index}>
-                <FilePreview
-                  file={file}
-                  onRemove={() => onChange(files.filter((item) => item !== file))}
-                />
-              </li>
-            ))}
-            {files.map((file, index) => (
-              <li key={index}>
-                <FilePreview
-                  file={file}
-                  onRemove={() => onChange(files.filter((item) => item !== file))}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div className={styles.files} onClick={(event) => event.stopPropagation()}>
+            <ul className={styles.files__list}>
+              {files.map((file, index) => (
+                <li key={index}>
+                  <FilePreview
+                    file={file}
+                    onRemove={() => onChange(files.filter((item) => item !== file))}
+                  />
+                </li>
+              ))}
+              {files.map((file, index) => (
+                <li key={index}>
+                  <FilePreview
+                    file={file}
+                    onRemove={() => onChange(files.filter((item) => item !== file))}
+                  />
+                </li>
+              ))}
+              {files.map((file, index) => (
+                <li key={index}>
+                  <FilePreview
+                    file={file}
+                    onRemove={() => onChange(files.filter((item) => item !== file))}
+                  />
+                </li>
+              ))}
+              {files.map((file, index) => (
+                <li key={index}>
+                  <FilePreview
+                    file={file}
+                    onRemove={() => onChange(files.filter((item) => item !== file))}
+                  />
+                </li>
+              ))}
+              {files.map((file, index) => (
+                <li key={index}>
+                  <FilePreview
+                    file={file}
+                    onRemove={() => onChange(files.filter((item) => item !== file))}
+                  />
+                </li>
+              ))}
+              {files.map((file, index) => (
+                <li key={index}>
+                  <FilePreview
+                    file={file}
+                    onRemove={() => onChange(files.filter((item) => item !== file))}
+                  />
+                </li>
+              ))}
+              {files.map((file, index) => (
+                <li key={index}>
+                  <FilePreview
+                    file={file}
+                    onRemove={() => onChange(files.filter((item) => item !== file))}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
       ) : null}
 
       {isProcessing ? (
-        <div className={styles.progressContainer}>
+        <>
           <div className={styles.divider} />
-          <div className={styles.progressBar}>
-            <div className={styles.progressBar__line} style={{ width: `${progress}%` }} />
+          <div className={styles.progressContainer}>
+            <div className={styles.progressBar}>
+              <div className={styles.progressBar__line} style={{ width: `${progress}%` }} />
+            </div>
+            <div className={styles.progressMessage}>
+              {progress >= 100 ? 'Готово!' : `${progress}%`}
+            </div>
           </div>
-          <div className={styles.progressMessage}>
-            {progress >= 100 ? 'Готово!' : `${progress}%`}
-          </div>
-        </div>
+        </>
       ) : null}
     </article>
   )
