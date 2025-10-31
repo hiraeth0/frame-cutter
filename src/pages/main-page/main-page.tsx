@@ -7,11 +7,13 @@ import { Button } from '../../components/button/button'
 import type { ProgressEvent } from '@ffmpeg/ffmpeg'
 import { fetchFile } from '@ffmpeg/util'
 import JSZip from 'jszip'
+import { ProcessingSettings } from './processing-settings/processing-settings'
 
 export const MainPage: React.FC = () => {
   const { ffmpeg } = useFfmpeg()
   const [files, setFiles] = useState<File[]>([])
-
+  const [frameDiff, setFrameDiff] = useState(10)
+  const [frameInterval, setFrameInterval] = useState(25)
   const [currentTaskProgress, setCurrentTaskProgress] = useState(0)
   const [archiveProgress, setArchiveProgress] = useState(0)
   const [doneCount, setDoneCount] = useState(0)
@@ -72,8 +74,7 @@ export const MainPage: React.FC = () => {
       const fileData = await fetchFile(file)
       await ffmpeg.writeFile(inName, fileData)
 
-      const vf =
-        'select=gt(scene\\,0.05)+not(mod(n\\,250)),mpdecimate=hi=64:lo=32:frac=0.33,showinfo'
+      const vf = `select=gt(scene\\,${frameDiff / 100})+not(mod(n\\,${frameInterval})),mpdecimate=hi=64:lo=32:frac=0.33,showinfo`
       const outPattern = `${safeBase}_%03d.png`
       const exitCode = await ffmpeg.exec([
         '-i',
@@ -155,6 +156,14 @@ export const MainPage: React.FC = () => {
           progress={isProcessing ? totalProgress : null}
           onChange={setFiles}
         />
+        {!isProcessing ? (
+          <ProcessingSettings
+            frameDiff={frameDiff}
+            frameInterval={frameInterval}
+            onChangeFrameDiff={setFrameDiff}
+            onChangeFrameInterval={setFrameInterval}
+          />
+        ) : null}
         <Button
           title={isDone ? 'Загрузить новое видео' : 'Нарезать и скачать'}
           disabled={!files.length || (isProcessing && !isDone)}

@@ -118,31 +118,33 @@ export const FileDropzone: FC<Props> = ({ files, progress, onChange }) => {
         setIsDraggingOver(false)
       }}
     >
-      <input
-        ref={inputRef}
-        type='file'
-        accept='video/*'
-        multiple
-        className={styles.fileInput}
-        onChange={(event) => {
-          if (isProcessing) {
-            return
-          }
+      {!isProcessing ? (
+        <input
+          ref={inputRef}
+          type='file'
+          accept='video/*'
+          multiple
+          className={styles.fileInput}
+          onChange={(event) => {
+            if (isProcessing) {
+              return
+            }
 
-          if (!event.target.files?.length) {
-            return
-          }
+            if (!event.target.files?.length) {
+              return
+            }
 
-          handleAppendFiles(Array.from(event.target.files))
-        }}
-      />
+            handleAppendFiles(Array.from(event.target.files))
+          }}
+        />
+      ) : null}
 
       <div className={clsx(styles.info, isProcessing && styles['info--hidden'])}>
         <IconUpload />
 
         <div className={styles.hint}>
-          <div className={styles.hint__title}>Перетащи файлы сюда или найди сам</div>
-          <div className={styles.hint__subtitle}>Максимальный размер 1 ГБ</div>
+          <div className={styles.hint__title}>Выбрать файлы</div>
+          <div className={styles.hint__subtitle}>Можно перетащить файлы мышкой</div>
         </div>
       </div>
 
