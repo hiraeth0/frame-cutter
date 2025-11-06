@@ -12,7 +12,7 @@ import { ProcessingSettings } from './processing-settings/processing-settings'
 export const MainPage: React.FC = () => {
   const { ffmpeg } = useFfmpeg()
   const [files, setFiles] = useState<File[]>([])
-  const [frameDiff, setFrameDiff] = useState(10)
+  const [frameDiff, setFrameDiff] = useState(1)
   const [frameInterval, setFrameInterval] = useState(25)
   const [currentTaskProgress, setCurrentTaskProgress] = useState(0)
   const [archiveProgress, setArchiveProgress] = useState(0)
